@@ -1,7 +1,7 @@
 Next JS | Server Side Rendering + Tailwind css !!
 
 ## Demo
-[https://nextjsssr.vercel.app/](nextjsssr.vercel.app)
+[nextjsssr.vercel.app](https://nextjsssr.vercel.app/)
 
 ## Getting Started
 
