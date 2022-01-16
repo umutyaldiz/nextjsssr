@@ -1,5 +1,6 @@
 import GenericHeader from "@/components/GenericHeader";
 import NewsList from "@/components/News/NewsList";
+import { fetchAPI } from "@/lib/api";
 
 
 const Category = ({ articles, category }) => {
@@ -7,7 +8,7 @@ const Category = ({ articles, category }) => {
         <>
             <div className="container">
                 <GenericHeader title={`KATEGORİ ${category}`} />
-                <NewsList data={articles} />
+                <NewsList list={articles} />
             </div>
         </>
     );
@@ -19,16 +20,21 @@ export default Category;
 export const getServerSideProps = async (ctx) => {
     const { params, req, res, query } = ctx;
     const { category } = params;
-    //console.log(query);
+    res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=180, stale-while-revalidate=180'
+    )
     // console.log(req.headers.cookie);
     // res.setHeader('Set-Cookie', ['name=Umut'])
 
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-    const data = await response.json();
+    const API_URL = process.env.NEXT_PUBLIC_POSTS_API_URL;
+    const [articles] = await Promise.all([
+        fetchAPI(API_URL)
+    ])
 
     return {
         props: {
-            articles: data,
+            articles,
             category
         }
     }

@@ -1,5 +1,5 @@
-import GenericHeader from "@/components/GenericHeader";
 import NewsContent from "@/components/News/NewsContent";
+import { fetchAPI } from "@/lib/api";
 
 
 const NewsDetail = ({ article }) => {
@@ -7,7 +7,7 @@ const NewsDetail = ({ article }) => {
     return (
         <>
             <div className="container">
-                <NewsContent data={article} />
+                <NewsContent article={article} />
             </div>
         </>
     );
@@ -19,12 +19,12 @@ export const getServerSideProps = async (ctx) => {
     const { params, req, res, query } = ctx;
     const { newsID } = params;
 
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${newsID}`);
-    const data = await response.json();
+    const API_URL = process.env.NEXT_PUBLIC_POSTS_API_URL;
+    const article = await fetchAPI(`${API_URL}/${newsID}`);
 
     return {
         props: {
-            article: data
+            article
         }
     }
 }

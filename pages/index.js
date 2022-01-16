@@ -1,12 +1,14 @@
 import GenericHeader from "@/components/GenericHeader";
 import NewsList from "@/components/News/NewsList";
+import { fetchAPI } from "@/lib/api.js";
 
-const Home = (props) => {
+
+const Home = ({ articles }) => {
   return (
     <>
       <div className="container">
-        <GenericHeader title={'Blog Anasayfa'} spot={'Blog Spot'} />
-        <NewsList data={props.articles} />
+        <GenericHeader title={'Anasayfa'} spot={'Spot'} />
+        <NewsList list={articles} />
       </div>
     </>
   );
@@ -14,14 +16,19 @@ const Home = (props) => {
 export default Home;
 
 export const getServerSideProps = async (ctx) => {
-  const { params } = ctx;
-  const API_URL = process.env.POSTS_API_URL;
-  const response = await fetch(API_URL);
-  const data = await response.json();
+  const { res } = ctx;
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=180, stale-while-revalidate=59'
+  )
 
+  const API_URL = process.env.NEXT_PUBLIC_POSTS_API_URL;
+  const [articles] = await Promise.all([
+    fetchAPI(API_URL)
+  ])
   return {
     props: {
-      articles: data
+      articles
     }
   }
 }

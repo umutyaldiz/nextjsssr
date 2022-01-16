@@ -1,19 +1,33 @@
+import ReactMarkdown from "react-markdown"
+import Moment from "react-moment";
+import 'moment/locale/tr';
+
 import GenericSectionHeader from "@/components/GenericSectionHeader";
 
-const NewsContent = ({ data }) => {
+
+
+const NewsContent = ({ article }) => {
+    const data = article.data;
     return (
         <>
             <article className="p-5 my-5 bg-gray-100 rounded-md shadow">
                 <div key={data.id} className="pb-2">
-                    <GenericSectionHeader title={data.title} />
+                    <GenericSectionHeader title={data.attributes.title} />
                     <figure>
                         <figcaption>
                             <p>
-                                {data.body}
+                                {data.attributes.description}
                             </p>
-                            <span className="font-black text-xs">{data.id}</span>
+                            <span className="font-black text-xs">
+                                <Moment format="MMM Do YYYY">{data.publishedAt}</Moment>
+                            </span>
                         </figcaption>
                     </figure>
+                    <div className="p-4">
+                        <ReactMarkdown>
+                            {data.attributes.body}
+                        </ReactMarkdown>
+                    </div>
                 </div>
             </article>
         </>

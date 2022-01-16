@@ -13,7 +13,7 @@ export default function FourZeroFour() {
                     <p className="mb-4 text-xl font-bold leading-normal md:text-2xl">
                         Üzgünüz, bu sayfayı bulamadık.
                     </p>
-                    <Link href="/">
+                    <Link href="/" passHref>
                         <button className="inline px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg shadow focus:outline-none focus:shadow-outline-blue hover:bg-blue-700 dark:hover:bg-blue-500">
                             Anasayfa
                         </button>
