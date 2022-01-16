@@ -17,6 +17,11 @@ export default NewsDetail;
 
 export const getServerSideProps = async (ctx) => {
     const { params, req, res, query } = ctx;
+    res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=10, stale-while-revalidate=59'
+    )
+
     const { newsID } = params;
 
     const API_URL = process.env.NEXT_PUBLIC_POSTS_API_URL;

@@ -19,7 +19,7 @@ export const getServerSideProps = async (ctx) => {
   const { res } = ctx;
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=180, stale-while-revalidate=59'
+    'public, s-maxage=10, stale-while-revalidate=59'
   )
 
   const API_URL = process.env.NEXT_PUBLIC_POSTS_API_URL;

@@ -22,7 +22,7 @@ export const getServerSideProps = async (ctx) => {
     const { category } = params;
     res.setHeader(
         'Cache-Control',
-        'public, s-maxage=180, stale-while-revalidate=180'
+        'public, s-maxage=10, stale-while-revalidate=59'
     )
     // console.log(req.headers.cookie);
     // res.setHeader('Set-Cookie', ['name=Umut'])
