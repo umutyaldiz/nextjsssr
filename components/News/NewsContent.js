@@ -1,4 +1,5 @@
 import ReactMarkdown from "react-markdown"
+import moment from 'moment'
 import Moment from "react-moment";
 import 'moment/locale/tr';
 
