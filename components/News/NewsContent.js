@@ -3,12 +3,13 @@ import moment from 'moment'
 import Moment from "react-moment";
 import 'moment/locale/tr';
 
+import { connect } from 'react-redux'
 import GenericSectionHeader from "@/components/GenericSectionHeader";
 
 
 
-const NewsContent = ({ article }) => {
-    const data = article.data;
+const NewsContent = ({ type, News }) => {
+    const data = News.article.data;
     return (
         <>
             <article className="p-5 my-5 bg-gray-100 rounded-md shadow">
@@ -35,4 +36,4 @@ const NewsContent = ({ article }) => {
     );
 }
 
-export default NewsContent;
+export default connect((state) => state)(NewsContent)

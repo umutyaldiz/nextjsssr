@@ -3,6 +3,8 @@ import Analytics from '@/components/Seo'
 import LayoutMaster from '@/layouts/index'
 import LayoutCategory from '@/layouts/LayoutCategory'
 
+import { wrapper } from '@/store/store'
+
 import '../styles/tailwind.css'
 
 const layouts = {
@@ -26,4 +28,4 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp)

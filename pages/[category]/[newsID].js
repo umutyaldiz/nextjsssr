@@ -1,35 +1,28 @@
+import { connect } from 'react-redux'
+import { wrapper } from '@/store/store';
+import { GetNews } from '@/store/news/actions';
+
 import NewsContent from "@/components/News/NewsContent";
-import { fetchAPI } from "@/lib/api";
 
 
-const NewsDetail = ({ article }) => {
-
+const NewsDetail = (props) => {
     return (
         <>
             <div className="container">
-                <NewsContent article={article} />
+                <NewsContent type='sportNews' />
             </div>
         </>
     );
 }
 
-export default NewsDetail;
-
-export const getServerSideProps = async (ctx) => {
+export const getServerSideProps = wrapper.getServerSideProps((store) => async (ctx) => {
     const { params, req, res, query } = ctx;
+    const { newsID } = params;
     res.setHeader(
         'Cache-Control',
         'public, s-maxage=10, stale-while-revalidate=59'
     )
+    await store.dispatch(GetNews(newsID))
+})
 
-    const { newsID } = params;
-
-    const API_URL = process.env.NEXT_PUBLIC_POSTS_API_URL;
-    const article = await fetchAPI(`${API_URL}/${newsID}`);
-
-    return {
-        props: {
-            article
-        }
-    }
-}
+export default connect(null, {})(NewsDetail)

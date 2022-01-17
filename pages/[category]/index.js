@@ -1,41 +1,38 @@
+import { connect } from 'react-redux'
+import { wrapper } from '@/store/store';
+import { GetNewsList } from '@/store/news/actions';
+
 import GenericHeader from "@/components/GenericHeader";
 import NewsList from "@/components/News/NewsList";
-import { fetchAPI } from "@/lib/api";
 
 
-const Category = ({ articles, category }) => {
+const Category = ({ category }) => {
     return (
         <>
             <div className="container">
                 <GenericHeader title={`KATEGORİ ${category}`} />
-                <NewsList list={articles} />
+                <NewsList type='category' />
             </div>
         </>
     );
 }
 
 Category.layout = `LayoutCategory`;
-export default Category;
 
-export const getServerSideProps = async (ctx) => {
+export const getServerSideProps = wrapper.getServerSideProps((store) => async (ctx) => {
     const { params, req, res, query } = ctx;
     const { category } = params;
     res.setHeader(
         'Cache-Control',
         'public, s-maxage=10, stale-while-revalidate=59'
     )
-    // console.log(req.headers.cookie);
-    // res.setHeader('Set-Cookie', ['name=Umut'])
-
-    const API_URL = process.env.NEXT_PUBLIC_POSTS_API_URL;
-    const [articles] = await Promise.all([
-        fetchAPI(API_URL)
-    ])
+    await store.dispatch(GetNewsList())
 
     return {
-        props: {
-            articles,
+        props:{
             category
         }
     }
-}
+})
+
+export default connect(null, {})(Category)

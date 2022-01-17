@@ -1,9 +1,11 @@
 import Link from "next/link";
+import { connect } from 'react-redux'
 import GenericSectionHeader from "@/components/GenericSectionHeader";
 
-const NewsList = ({ list }) => {
-    const data = list.data;
-    const meta = list.meta;
+const NewsList = ({ type, News }) => {
+    const data = News.articles.data;
+    const meta = News.articles.meta;
+    console.log(News);
     return (
         <>
             <section className="p-5 my-5 bg-gray-100 rounded-md shadow">
@@ -31,4 +33,4 @@ const NewsList = ({ list }) => {
     );
 }
 
-export default NewsList;
+export default connect((state) => state)(NewsList)
