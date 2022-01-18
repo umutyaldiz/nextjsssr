@@ -3,6 +3,7 @@ import { wrapper } from '@/store/store';
 import { GetNews } from '@/store/news/actions';
 
 import NewsContent from "@/components/News/NewsContent";
+import CacheControl from '@/components/CacheControl';
 
 
 const NewsDetail = (props) => {
@@ -18,10 +19,7 @@ const NewsDetail = (props) => {
 export const getServerSideProps = wrapper.getServerSideProps((store) => async (ctx) => {
     const { params, req, res, query } = ctx;
     const { newsID } = params;
-    res.setHeader(
-        'Cache-Control',
-        'public, s-maxage=10, stale-while-revalidate=59'
-    )
+    CacheControl(res);
     await store.dispatch(GetNews(newsID))
 })
 

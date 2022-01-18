@@ -4,6 +4,7 @@ import { GetNewsList } from '@/store/news/actions';
 
 import GenericHeader from "@/components/GenericHeader";
 import NewsList from "@/components/News/NewsList";
+import CacheControl from '@/components/CacheControl';
 
 
 
@@ -20,10 +21,7 @@ const Home = (props) => {
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async (ctx) => {
   const { res } = ctx;
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=10, stale-while-revalidate=59'
-  )
+  CacheControl(res);
   await store.dispatch(GetNewsList())
 })
 

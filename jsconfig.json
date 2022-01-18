@@ -17,8 +17,8 @@
       "@/layouts/*": [
         "layouts/*"
       ],
-      "@/css/*": [
-        "css/*"
+      "@/styles/*": [
+        "styles/*"
       ]
     }
   }
