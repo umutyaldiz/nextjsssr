@@ -1,20 +1,17 @@
 import Head from 'next/head'
-import Analytics from '@/components/Seo'
-import LayoutMaster from '@/layouts/index'
-import LayoutCategory from '@/layouts/LayoutCategory'
-
+import Analytics from '@/components/Analytics'
+import Layouts from '@/layouts/index'
 import { wrapper } from '@/store/store'
-
 import '../styles/tailwind.css'
+import { WebVitals } from '@/components/WebVitals'
+export function reportWebVitals(metric) {
+  WebVitals(metric)
+}
 
-const layouts = {
-  LayoutMaster,
-  LayoutCategory
-};
+
 
 function MyApp({ Component, pageProps }) {
-  const Layout = layouts[Component.layout] || layouts['LayoutMaster'];
-
+  const Layout = Layouts[Component.layout] || Layouts['LayoutMaster'];
   return (
     <>
       <Head>

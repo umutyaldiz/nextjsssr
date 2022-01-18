@@ -25,8 +25,9 @@ export const GetNewsList = () => async (dispatch) => {
 }
 
 export const GetNews = (ID) => async (dispatch) => {
+    let article = [];
     try {
-        const article = await fetchAPI(`${NEXT_PUBLIC_POSTS_API_URL}/${ID}`)
+         article = await fetchAPI(`${NEXT_PUBLIC_POSTS_API_URL}/${ID}`)
         dispatch({
             type: NewsActionTypes.GET_NEWS,
             article: article,
@@ -38,6 +39,6 @@ export const GetNews = (ID) => async (dispatch) => {
             message: error
         })
     }
-
+    return article;
 }
 

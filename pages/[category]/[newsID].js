@@ -20,7 +20,16 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
     const { params, req, res, query } = ctx;
     const { newsID } = params;
     CacheControl(res);
-    await store.dispatch(GetNews(newsID))
+    const article = await store.dispatch(GetNews(newsID))
+    if (!article || !article.data) {
+        return {
+            redirect: {
+                destination: "/",
+                permanent: false,
+            },
+        }
+    }
+
 })
 
 export default connect(null, {})(NewsDetail)

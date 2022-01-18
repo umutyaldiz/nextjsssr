@@ -5,7 +5,9 @@ import GenericSectionHeader from "@/components/GenericSectionHeader";
 const NewsList = ({ type, News }) => {
     const data = News.articles.data;
     const meta = News.articles.meta;
-    console.log(News);
+    if(process.env.NODE_ENV === 'production'){
+        console.log(News);
+    }
     return (
         <>
             <section className="p-5 my-5 bg-gray-100 rounded-md shadow">

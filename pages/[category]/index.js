@@ -5,11 +5,13 @@ import { GetNewsList } from '@/store/news/actions';
 import GenericHeader from "@/components/GenericHeader";
 import NewsList from "@/components/News/NewsList";
 import CacheControl from '@/components/CacheControl';
+import Seo from '@/components/Seo';
 
 
 const Category = ({ category }) => {
     return (
         <>
+        <Seo title={category} description={`${category} açıklama`} />
             <div className="container">
                 <GenericHeader title={`KATEGORİ ${category}`} />
                 <NewsList type='category' />
@@ -25,7 +27,6 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
     const { category } = params;
     CacheControl(res);
     await store.dispatch(GetNewsList())
-
     return {
         props:{
             category

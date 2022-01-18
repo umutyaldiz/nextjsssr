@@ -5,6 +5,7 @@ import 'moment/locale/tr';
 
 import { connect } from 'react-redux'
 import GenericSectionHeader from "@/components/GenericSectionHeader";
+import Seo from "@/components/Seo";
 
 
 
@@ -12,6 +13,7 @@ const NewsContent = ({ type, News }) => {
     const data = News.article.data;
     return (
         <>
+            <Seo title={data.attributes.title} description={data.attributes.description} />
             <article className="p-5 my-5 bg-gray-100 rounded-md shadow">
                 <div key={data.id} className="pb-2">
                     <GenericSectionHeader title={data.attributes.title} />

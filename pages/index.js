@@ -5,12 +5,12 @@ import { GetNewsList } from '@/store/news/actions';
 import GenericHeader from "@/components/GenericHeader";
 import NewsList from "@/components/News/NewsList";
 import CacheControl from '@/components/CacheControl';
-
-
+import Seo from '@/components/Seo';
 
 const Home = (props) => {
   return (
     <>
+      <Seo title={`Anasayfa`} description={`Anasayfa açıklama`} />
       <div className="container">
         <GenericHeader title={'Anasayfa'} spot={'Spot'} />
         <NewsList type='home' />

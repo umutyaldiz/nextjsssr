@@ -1,13 +1,21 @@
-import GAScript from "./Gtm"
+import Head from "next/head";
 
-const isProduction = process.env.NODE_ENV === 'production'
-
-const Analytics = () => {
+const config = process.env.DefaultSeo;
+const Seo = ({ title, description }) => {
+    const siteTitle = config.title;
     return (
-        <>
-            {isProduction && process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID && <GAScript />}
-        </>
-    )
+        <Head>
+            <title>{`${title} | ${siteTitle}`}</title>
+            <meta name="description" content={description} />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content={title} />
+            <meta property="og:description" content={description} />
+            <meta property="og:site_name" content={siteTitle} />
+            <meta property="twitter:card" content="summary" />
+            <meta property="twitter:title" content={title} />
+            <meta property="twitter:description" content={description} />
+        </Head>
+    );
 }
 
-export default Analytics
+export default Seo;

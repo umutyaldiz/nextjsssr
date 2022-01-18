@@ -1,14 +1,6 @@
-import NextNProgress from "nextjs-progressbar";
-import Header from "@/components/Header";
+import LayoutMaster from "./LayoutMaster"
+import LayoutCategory from "./LayoutCategory"
 
-const LayoutMaster = ({ children }) => {
-    return (
-        <div className="master">
-            <NextNProgress height={2} color="#cc0000" />
-            <Header />
-            {children}
-        </div>
-    )
-}
+const Layouts = { LayoutMaster, LayoutCategory }
 
-export default LayoutMaster;
+export default Layouts

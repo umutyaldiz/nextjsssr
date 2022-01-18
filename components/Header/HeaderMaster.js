@@ -5,7 +5,7 @@ import headerData from '@/data/header'
 const Header = () => {
     const router = useRouter();    
     return (
-        <header className="bg-gray-800">
+        <header className="sticky top-0 left-0 w-full bg-gray-800">
             <div className="container">
                 <nav>
                     <div className="flex items-center h-12 space-x-4">
