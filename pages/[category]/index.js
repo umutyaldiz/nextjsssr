@@ -11,7 +11,7 @@ import Seo from '@/components/Seo';
 const Category = ({ category }) => {
     return (
         <>
-        <Seo title={category} description={`${category} açıklama`} />
+            <Seo title={category} description={`${category} açıklama`} />
             <div className="container">
                 <GenericHeader title={`KATEGORİ ${category}`} />
                 <NewsList type='category' />
@@ -28,10 +28,10 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
     CacheControl(res);
     await store.dispatch(GetNewsList())
     return {
-        props:{
+        props: {
             category
         }
     }
 })
 
-export default connect(null, {})(Category)
+export default connect((state) => state, {})(Category)

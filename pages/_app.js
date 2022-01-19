@@ -4,6 +4,7 @@ import Layouts from '@/layouts/index'
 import { wrapper } from '@/store/store'
 import '../styles/tailwind.css'
 import { WebVitals } from '@/components/WebVitals'
+import { GetNav } from '@/store/header/actions'
 export function reportWebVitals(metric) {
   WebVitals(metric)
 }
@@ -24,5 +25,11 @@ function MyApp({ Component, pageProps }) {
     </>
   )
 }
+
+MyApp.getInitialProps = wrapper.getInitialAppProps(store => async ({ Component, ctx }) => {
+  await store.dispatch(GetNav())
+  const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
+  return { pageProps };
+})
 
 export default wrapper.withRedux(MyApp)

@@ -3,7 +3,8 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 import thunkMiddleware from 'redux-thunk'
 
-import News from './news/reducer'
+import Header from '@/store/header/reducer'
+import News from '@/store/news/reducer'
 
 const bindMiddleware = (middleware) => {
     if (process.env.NODE_ENV !== 'production') {
@@ -14,7 +15,7 @@ const bindMiddleware = (middleware) => {
 }
 
 const combinedReducer = combineReducers({
-    News
+    News, Header
 })
 
 const reducer = (state, action) => {

@@ -16,7 +16,7 @@ const reducer = (state = newsInitialState, action) => {
         case NewsActionTypes.GET_NEWS_LIST_ERROR:
             return {
                 ...state,
-                message: action.payload
+                message: action.message
             }
         case NewsActionTypes.GET_NEWS:
             return {
@@ -27,7 +27,7 @@ const reducer = (state = newsInitialState, action) => {
         case NewsActionTypes.GET_NEWS_ERROR:
             return {
                 ...state,
-                message: action.payload
+                message: action.message
             }
         default:
             return state

@@ -25,12 +25,10 @@ function Error({ statusCode }) {
 }
 
 export async function getServerSideProps({ res, err }) {
-    console.log(res.statusCode);
-    //const statusCode = res.statusCode;
     const statusCode = res ? res.statusCode : err ? err.statusCode : 404
     return {
         props: {
-            statusCode:statusCode
+            statusCode: statusCode
         }
     }
 }

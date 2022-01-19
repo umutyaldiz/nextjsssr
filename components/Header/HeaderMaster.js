@@ -1,20 +1,26 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import headerData from '@/data/header'
+import { connect } from 'react-redux';
 
-const Header = () => {
-    const router = useRouter();    
+
+const Header = ({ Header }) => {
+    const router = useRouter();
     return (
-        <header className="sticky top-0 left-0 w-full bg-gray-800">
+        <header className="sticky top-0 left-0 w-full bg-gray-800 z-50">
             <div className="container">
                 <nav>
                     <div className="flex items-center h-12 space-x-4">
+                        <Link href="/">
+                            <a title="anasayfa" className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
+                                Anasayfa
+                            </a>
+                        </Link>
                         {
-                            headerData.map(nav => {
+                            Header.nav.data.map(nav => {
                                 return (
-                                    <Link key={nav.name} href={nav.url} >
-                                        <a title={nav.name} className={`text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${router.asPath == nav.url ? "bg-gray-700" : ""}`}>
-                                            {nav.name}
+                                    <Link key={nav.attributes.name} href={nav.attributes.url} >
+                                        <a title={nav.attributes.name} className={`text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${router.asPath == nav.attributes.url ? "bg-gray-700" : ""}`}>
+                                            {nav.attributes.name}
                                         </a>
                                     </Link>
                                 )
@@ -27,4 +33,4 @@ const Header = () => {
     );
 }
 
-export default Header;
+export default connect((state) => state)(Header)
