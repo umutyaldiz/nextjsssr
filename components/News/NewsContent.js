@@ -10,7 +10,8 @@ import Seo from "@/components/Seo";
 
 
 const NewsContent = ({ type, News }) => {
-    const data = News.article.data;
+    const data = News.article.data[0];
+    
     return (
         <>
             <Seo title={data.attributes.title} description={data.attributes.description} />

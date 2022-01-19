@@ -7,9 +7,10 @@ export const NewsActionTypes = {
     GET_NEWS_ERROR: 'GET_NEWS_ERROR',
 }
 
-export const GetNewsList = () => async (dispatch) => {
+export const GetNewsList = (category = '') => async (dispatch) => {
+    const categoryFilter = category ? `?filters[category][$eq]=${category}` : '';
     try {
-        const articles = await fetchAPI(NEXT_PUBLIC_POSTS_API_URL)
+        const articles = await fetchAPI(`${NEXT_PUBLIC_POSTS_API_URL}${categoryFilter}`)
         dispatch({
             type: NewsActionTypes.GET_NEWS_LIST,
             articles: articles,
@@ -24,10 +25,10 @@ export const GetNewsList = () => async (dispatch) => {
 
 }
 
-export const GetNews = (ID) => async (dispatch) => {
+export const GetNews = (slug) => async (dispatch) => {
     let article = [];
     try {
-         article = await fetchAPI(`${NEXT_PUBLIC_POSTS_API_URL}/${ID}`)
+        article = await fetchAPI(`${NEXT_PUBLIC_POSTS_API_URL}?filters[slug][$eq]=${slug}`)
         dispatch({
             type: NewsActionTypes.GET_NEWS,
             article: article,

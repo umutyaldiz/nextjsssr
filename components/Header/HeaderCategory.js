@@ -18,7 +18,7 @@ const HeaderCategory = ({ Header }) => {
                             Header.nav.data.map(nav => {
                                 return (
                                     <Link key={nav.attributes.name} href={nav.attributes.url} >
-                                        <a title={nav.attributes.name} className={`text-gray-300 hover:bg-red-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${router.asPath == nav.attributes.url ? "bg-red-400" : ""}`}>
+                                        <a title={nav.attributes.name} className={`text-gray-300 hover:bg-red-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${router.asPath.match(nav.attributes.url) ? "bg-red-400" : ""}`}>
                                             {nav.attributes.name}
                                         </a>
                                     </Link>

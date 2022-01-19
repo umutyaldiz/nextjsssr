@@ -16,11 +16,13 @@ const NewsDetail = (props) => {
     );
 }
 
+NewsDetail.layout = `LayoutCategory`;
+
 export const getServerSideProps = wrapper.getServerSideProps((store) => async (ctx) => {
     const { params, req, res, query } = ctx;
-    const { newsID } = params;
+    const { slug } = params;
     CacheControl(res);
-    const article = await store.dispatch(GetNews(newsID))
+    const article = await store.dispatch(GetNews(slug))
     if (!article || !article.data) {
         return {
             redirect: {

@@ -26,7 +26,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
     const { params, req, res, query } = ctx;
     const { category } = params;
     CacheControl(res);
-    await store.dispatch(GetNewsList())
+    await store.dispatch(GetNewsList(category))
     return {
         props: {
             category

@@ -5,9 +5,9 @@ import GenericSectionHeader from "@/components/GenericSectionHeader";
 const NewsList = ({ type, News }) => {
     const data = News.articles.data;
     const meta = News.articles.meta;
-    if(process.env.NODE_ENV === 'production'){
-        console.log(News);
-    }
+    // if(process.env.NODE_ENV === 'production'){
+    //     console.log(News);
+    // }
     return (
         <>
             <section className="p-5 my-5 bg-gray-100 rounded-md shadow">
@@ -15,7 +15,7 @@ const NewsList = ({ type, News }) => {
                 {
                     data.map(item => (
                         <div key={item.id} className="flex flex-col pb-2 border-b border-gray-300 border-dashed">
-                            <Link href={`/sports/${item.id}`}>
+                            <Link href={`/${item.attributes.category}/${item.attributes.slug}`}>
                                 <a title={item.attributes.title}>
                                     <figure>
                                         <figcaption>
