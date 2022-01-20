@@ -11,7 +11,7 @@ const Home = (props) => {
   return (
     <>
       <Seo title={`Anasayfa`} description={`Anasayfa açıklama`} />
-      <div className="flex justify-center overflow-hidden">
+      <div className="page-wrapper">
         <PageSkinLeft />
         <div className="container">
           <MastHead />

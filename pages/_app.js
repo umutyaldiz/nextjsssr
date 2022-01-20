@@ -2,7 +2,7 @@ import Head from "next/head";
 import Analytics from "@/components/Analytics";
 import Layouts from "@/layouts/index";
 import { wrapper } from "@/store/store";
-import "../styles/tailwind.css";
+import "../styles/tailwind.scss";
 import { WebVitals } from "@/components/WebVitals";
 import { GetNav } from "@/store/header/actions";
 export function reportWebVitals(metric) {

@@ -1,9 +1,7 @@
 const PageSkinRight = () => {
   return (
-    <div className="hidden xl:block mt-3 min-h-min">
-      <div className="sticky top-16 flex justify-start max-w-full w-[300px] h-[600px] bg-gray-100">
-        PageSkinRight
-      </div>
+    <div className="hidden xl:flex mt-3 sticky top-16 justify-start max-w-full w-[300px] min-h-[600px] bg-gray-100">
+      PageSkinRight
     </div>
   );
 };

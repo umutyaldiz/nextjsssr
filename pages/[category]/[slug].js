@@ -8,7 +8,7 @@ import { MastHead, PageSkinLeft, PageSkinRight } from "@/components/PageSkin";
 const NewsDetail = (props) => {
   return (
     <>
-      <div className="flex justify-center overflow-hidden">
+      <div className="page-wrapper">
         <PageSkinLeft />
         <div className="container">
           <MastHead />

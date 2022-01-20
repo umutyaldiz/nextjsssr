@@ -1,0 +1,10 @@
+.page-wrapper{
+    @apply flex justify-center flex-grow items-start;
+}
+.container{
+    @apply px-4;
+}
+
+#__next{
+    @apply min-h-screen relative pb-[340px];
+}

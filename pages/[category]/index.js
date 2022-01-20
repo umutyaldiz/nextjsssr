@@ -11,7 +11,7 @@ const Category = ({ category }) => {
   return (
     <>
       <Seo title={category} description={`${category} açıklama`} />
-      <div className="flex justify-center overflow-hidden">
+      <div className="page-wrapper">
         <PageSkinLeft />
         <div className="container">
           <MastHead />
