@@ -7,7 +7,7 @@ const Header = ({ Header }) => {
     const router = useRouter();
     return (
         <header className="sticky top-0 left-0 w-full bg-gray-800 z-50">
-            <div className="container">
+            <div className="container mx-auto">
                 <nav>
                     <div className="flex items-center h-12 space-x-4">
                         <Link href="/">
