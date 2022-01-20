@@ -1,38 +1,25 @@
-import Link from "next/link";
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
 import GenericSectionHeader from "@/components/GenericSectionHeader";
+import NewsItem from "./NewsListItem";
 
 const NewsList = ({ type, News }) => {
-    const data = News.articles.data;
-    const meta = News.articles.meta;
-    // if(process.env.NODE_ENV === 'production'){
-    //     console.log(News);
-    // }
-    return (
-        <>
-            <section className="p-5 my-5 bg-gray-100 rounded-md shadow">
-                <GenericSectionHeader title={'Haber Listesi'} />
-                {
-                    data.map(item => (
-                        <div key={item.id} className="flex flex-col pb-2 border-b border-gray-300 border-dashed">
-                            <Link href={`/${item.attributes.category}/${item.attributes.slug}`}>
-                                <a title={item.attributes.title}>
-                                    <figure>
-                                        <figcaption>
-                                            <span className="font-black text-2xl">{item.id}</span>
-                                            <p>
-                                                {item.attributes.title}
-                                            </p>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </Link>
-                        </div>
-                    ))
-                }
-            </section>
-        </>
-    );
-}
+  const data = News.articles.data;
+  const meta = News.articles.meta;
+  // if(process.env.NODE_ENV === 'production'){
+  //     console.log(News);
+  // }
+  return (
+    <>
+      <section className="my-5">
+        <GenericSectionHeader title={"Haber Listesi"} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+          {data.map((item) => (
+            <NewsItem key={item.id} item={item} />
+          ))}
+        </div>
+      </section>
+    </>
+  );
+};
 
-export default connect((state) => state)(NewsList)
+export default connect((state) => state)(NewsList);

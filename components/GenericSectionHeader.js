@@ -1,6 +1,6 @@
 const GenericSectionHeader = ({ title, spot }) => {
     return (
-        <div className="flex justify-between">
+        <div className="flex justify-between mb-4">
             <div className="flex items-center">
                 <h2 className="flex items-center pb-4 mb-2 font-black text-xl text-gray-700 relative">
                     {title}
