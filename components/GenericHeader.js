@@ -1,6 +1,6 @@
 const GenericHeader = ({ title, spot }) => {
     return (
-        <div className="text-left">
+        <div className="text-left mt-3 mb-6">
             <h1 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
                 {title}
             </h1>
