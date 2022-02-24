@@ -4,7 +4,7 @@ import Moment from "react-moment";
 import 'moment/locale/tr';
 
 import { connect } from 'react-redux'
-import GenericSectionHeader from "@/components/GenericSectionHeader";
+import GenericHeader from "@/components/GenericHeader";
 import Seo from "@/components/Seo";
 
 
@@ -17,7 +17,7 @@ const NewsContent = ({ type, News }) => {
             <Seo title={data.attributes.title} description={data.attributes.description} />
             <article className="p-5 my-5 bg-gray-100 rounded-md shadow">
                 <div key={data.id} className="pb-2">
-                    <GenericSectionHeader title={data.attributes.title} />
+                    <GenericHeader title={data.attributes.title} />
                     <figure>
                         <figcaption>
                             <p>
